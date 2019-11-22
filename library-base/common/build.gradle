@@ -1,15 +1,11 @@
-apply plugin: 'com.android.application'
-
+apply plugin: 'com.android.library'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
-
     defaultConfig {
-        applicationId rootProject.ext.android.applicationId
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
-        flavorDimensions rootProject.ext.android.flavorDimensions
         versionName rootProject.ext.android.versionName
         multiDexEnabled = true
         ndk {
@@ -25,18 +21,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
-        ceshi {
-            manifestPlaceholders = [ENVIRONMENT: "1", LOG_ENABLE: "1", CHANNALID: "ceshi"]
-        }
-        biaozhun {
-            manifestPlaceholders = [ENVIRONMENT: "2", LOG_ENABLE: "1", CHANNALID: "biaozhun"]
-        }
-    }
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':library-base:common')
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["constraintlayout"]
+    api project(":library-base:network")
+    //debug
+    api rootProject.ext.debugDependencies["stetho"]
+    api rootProject.ext.debugDependencies["stetho-okhttp"]
 }

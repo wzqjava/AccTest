@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+
+    dependencies{
+        api rootProject.ext.httpDependencies["retrofit"]
+        api rootProject.ext.httpDependencies["converter-scalars"]
+        api rootProject.ext.httpDependencies["converter-gson"]
+        api rootProject.ext.httpDependencies["adapter-rxjava2"]
+        api rootProject.ext.httpDependencies["okhttp"]
+        api rootProject.ext.httpDependencies["okio"]
+        api rootProject.ext.httpDependencies["rxandroid"]
+        api rootProject.ext.httpDependencies["rxjava"]
+    }
+}
+
+dependencies {
+    api rootProject.ext.aacDependencies["lifecycle-livedata"]
+
+}

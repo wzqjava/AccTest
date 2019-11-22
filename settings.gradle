@@ -1,2 +1,3 @@
+rootProject.name = 'AccTest'
 include ':app'
-rootProject.name='AccTest'
+include 'library-base:common','library-base:network'
